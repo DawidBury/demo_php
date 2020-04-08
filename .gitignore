@@ -12,3 +12,7 @@
 ###< jetbrains ###
 .idea
 ###< jetbrains ###
+
+###< symfony server ###
+.php-version
+###< symfony server ###
