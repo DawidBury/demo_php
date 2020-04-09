@@ -2,17 +2,16 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class IndexController extends AbstractController
+class HomePageController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home_page")
      */
     public function index()
     {
-        return new JsonResponse('test', 200);
+        return $this->render('default/homepage.html.twig');
     }
 }
