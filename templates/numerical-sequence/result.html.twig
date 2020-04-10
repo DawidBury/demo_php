@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>Mamy wyniki!</h1>
+            {% for key, value in results %}
+                <p>Input: {{ key }} | Output: {{ value }}</p>
+            {% endfor %}
+            <p class="pt-3">
+                <a href="{{ path('form') }}" class="btn btn-primary my-2">Powrót do formularza</a>
+            </p>
+        </div>
+    </section>
+{% endblock %}

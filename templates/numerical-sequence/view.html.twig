@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form, { 'attr': { 'class': 'pt-2' }}) }}
+    <div class="form-group">
+        {{ form_label(form.number) }}
+        {{ form_widget(form.number) }}
+        <small class="form-text text-muted">Oddziel wprowadzone liczby przecinkiem</small>
+    </div>
+    {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}
