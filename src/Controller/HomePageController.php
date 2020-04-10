@@ -14,4 +14,12 @@ class HomePageController extends AbstractController
     {
         return $this->render('default/homepage.html.twig');
     }
+
+    /**
+     * @Route("/console-info", name="console_info")
+     */
+    public function consoleVersionInfo()
+    {
+        return $this->render('default/console-version-info.html.twig');
+    }
 }
