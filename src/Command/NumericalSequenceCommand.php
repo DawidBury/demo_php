@@ -24,6 +24,11 @@ class NumericalSequenceCommand extends Command
      */
     private $validator;
 
+    /**
+     * @var array
+     */
+    private $numbers = [];
+
     public function __construct(NumericalSequence $numericalSequence, Validator $validator)
     {
         $this->numericalSequence = $numericalSequence;
@@ -39,19 +44,34 @@ class NumericalSequenceCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function interact(InputInterface $input, OutputInterface $output)
     {
         $helper = $this->getHelper('question');
         $question = new Question("Podaj liczbę 'n': ");
+        $counter = 0;
+        $maxNumberOfNumbers = 10;
 
         $output->writeln('Witam! Podaj mi proszę liczby do policzenia największej liczby ciągu :)');
         $output->writeln('PORADNIK: Aby zakończyć wpisywanie liczb wpisz q');
 
-        $numbers = [];
         do {
             $number = $helper->ask($input, $output, $question);
+
+            if ($number === 'q')
+                return;
+
             $this->validator->validateInputNumber($number);
-            $numbers[] = $number;
-        } while ($number != 'q');
+            $this->numbers[] = $number;
+
+            $counter++;
+        } while ($counter != $maxNumberOfNumbers);
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        foreach ($this->numbers as $number) {
+            $result = $this->numericalSequence->getMaximumValue($number);
+            $output->writeln('Input: ' . $number . ' | output: ' . $result);
+        }
     }
 }
