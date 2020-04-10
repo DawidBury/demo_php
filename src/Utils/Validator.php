@@ -14,7 +14,7 @@ class Validator
         }
 
         if ($number < 1 || $number > 99999) {
-            throw new InvalidArgumentException('Wprowadzona liczba musi być liczbową całkowitą większą lub równą jeden');
+            throw new InvalidArgumentException('Wprowadzona liczba musi być liczbą całkowitą większą lub równą 1 i mniejszą bądź równą 99999');
         }
     }
 }
